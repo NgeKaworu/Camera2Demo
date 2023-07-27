@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CaptureRequest;
 import android.os.Handler;
-import android.support.v7.widget.AppCompatSeekBar;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+
+import androidx.appcompat.widget.AppCompatSeekBar;
 
 import com.smewise.camera2.R;
 import com.smewise.camera2.callback.CameraUiEvent;

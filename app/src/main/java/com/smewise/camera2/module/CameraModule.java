@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CaptureResult;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -36,7 +37,9 @@ public abstract class CameraModule {
 
     public void init(Context context, Controller controller) {
         // just need init once
-        if (mController != null) { return; }
+        if (mController != null) {
+            return;
+        }
         appContext = context;
         mController = controller;
         mainHandler = getToolKit().getMainHandler();
@@ -150,24 +153,31 @@ public abstract class CameraModule {
     void updateAFState(int state, FocusOverlayManager overlayManager) {
         switch (state) {
             case CaptureResult.CONTROL_AF_STATE_ACTIVE_SCAN:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_ACTIVE_SCAN");
                 overlayManager.startFocus();
                 break;
             case CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_FOCUSED_LOCKED");
                 overlayManager.focusSuccess();
                 break;
             case CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_NOT_FOCUSED_LOCKED");
                 overlayManager.focusFailed();
                 break;
             case CaptureResult.CONTROL_AF_STATE_PASSIVE_FOCUSED:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_PASSIVE_FOCUSED");
                 overlayManager.focusSuccess();
                 break;
             case CaptureResult.CONTROL_AF_STATE_PASSIVE_SCAN:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_PASSIVE_SCAN");
                 overlayManager.autoFocus();
                 break;
             case CaptureResult.CONTROL_AF_STATE_PASSIVE_UNFOCUSED:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_PASSIVE_UNFOCUSED");
                 overlayManager.focusFailed();
                 break;
             case CaptureResult.CONTROL_AF_STATE_INACTIVE:
+                Log.d(TAG, "updateAfState: " + state + " CONTROL_AF_STATE_INACTIVE");
                 overlayManager.hideFocusUI();
                 break;
         }
