@@ -123,9 +123,9 @@ public class AppBaseUI implements View.OnClickListener {
         previewParams.setMargins(0, topMargin, 0, 0);
         mPreviewRootView.setLayoutParams(previewParams);
         // bottom bar
-        bottomBarParams.height = bottomHeight;
-        mBottomContainer.setPadding(0, 0, 0, mVirtualKeyHeight);
-        mBottomContainer.setLayoutParams(bottomBarParams);
+//        bottomBarParams.height = bottomHeight;
+        mBottomContainer.setPadding(0, 0, 0, 12);
+//        mBottomContainer.setLayoutParams(bottomBarParams);
     }
 
     /* should not call in main thread */
